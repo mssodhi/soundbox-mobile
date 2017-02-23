@@ -2,5 +2,11 @@
   "name": "soundbox-mobile",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/soundbox",
+      "proxyUrl": "http://mssodhi.me/soundbox"
+    }
+  ]
 }
