@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
-import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS } from '../../app/shared';
+import { STATUS } from '../../app/shared';
 
 @Component({
   selector: 'page-settings',
@@ -11,12 +10,8 @@ import { ACTION, STATUS } from '../../app/shared';
 })
 export class SettingsPage implements OnInit {
   user: any;
-  favorites: any;
-  subscription: Subscription;
 
-  constructor(public navCtrl: NavController, private store: Store<any>) {
-    this.store.dispatch({ type: ACTION.LOAD_PROFILE });
-  }
+  constructor(public navCtrl: NavController, private store: Store<any>) {}
 
   ngOnInit() {
     this.store.select<any>('PROFILE_REDUCER')

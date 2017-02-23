@@ -1,23 +1,23 @@
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-// import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class FavoritesService {
+  url: String = '';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.url = '/soundbox';
+  }
 
   getFavorites(userId: any) {
     return this.http
-      .get(`/soundbox/api/favorites/getFavorites/user/${userId}`)
+      .get(`${this.url}/api/favorites/getFavorites/user/${userId}`)
       .map(res => res.json());
   }
 
   getCharts(name: String) {
     return this.http
-      .get(`/soundbox/api/charts/getByGenre/${name}`)
+      .get(`${this.url}/api/charts/getByGenre/${name}`)
       .map(res => res.json());
   }
 

@@ -19,12 +19,6 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    SC.initialize({
-      client_id: '0f7c969c815f51078c1de513f666ecdb',
-      secret_token: '4d27e9b3aab697fbee797b6b1495e408',
-      redirect_uri: 'http://localhost:8080/soundbox/#/'
-    });
-
     this.store.select<any>('PROFILE_REDUCER')
       .filter(state => state.status == STATUS.COMPLETED)
       .first()
@@ -46,9 +40,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.store.select<any>('PLAYER_REDUCER')
       .filter(state => state.status === STATUS.COMPLETED)
       .first()
-      .subscribe(state => {
-        state.player.play();
-      })
+      .subscribe(state => this.store.dispatch({ type: ACTION.PLAY }));
   }
 
   ngOnDestroy() {
