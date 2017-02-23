@@ -3,13 +3,13 @@ import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS } from '../../app/shared';
+import { ACTION, STATUS } from "../../constants";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'music-player',
+  templateUrl: 'music-player.html'
 })
-export class HomePage implements OnInit, OnDestroy {
+export class MusicPlayer implements OnInit, OnDestroy {
   user: any;
   favorites: any;
   subscription: Subscription;
@@ -42,13 +42,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   onSelect(track) {
-    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
-    this.store.select<any>('PLAYER_REDUCER')
-      .filter(state => state.status === STATUS.COMPLETED)
-      .first()
-      .subscribe(state => {
-        state.player.play();
-      })
+    console.log(track);
   }
 
   ngOnDestroy() {

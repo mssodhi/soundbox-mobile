@@ -9,12 +9,6 @@ const INIT_STATE = {
 };
 
 export const FAVORITES_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: Action) => {
-  SC.initialize({
-    client_id: '0f7c969c815f51078c1de513f666ecdb',
-    secret_token: '4d27e9b3aab697fbee797b6b1495e408',
-    redirect_uri: 'http://localhost:8080/soundbox/#/'
-  });
-
   switch (action.type) {
 
     case ACTION.LOAD_FAVORITES:

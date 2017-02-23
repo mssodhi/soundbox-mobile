@@ -13,9 +13,7 @@ export class ChartsPage implements OnInit, OnDestroy {
   charts: any;
   subscription: Subscription;
 
-  constructor(public navCtrl: NavController, private store: Store<any>) {
-    this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: 'all-music'});
-  }
+  constructor(public navCtrl: NavController, private store: Store<any>) {}
 
   ngOnInit() {
     this.subscription = this.store.select<any>('CHARTS_REDUCER')
@@ -31,6 +29,12 @@ export class ChartsPage implements OnInit, OnDestroy {
   }
 
   onSelect(track) {
-    console.log(track);
+    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
+    this.store.select<any>('PLAYER_REDUCER')
+      .filter(state => state.status === STATUS.COMPLETED)
+      .first()
+      .subscribe(state => {
+        state.player.play();
+      })
   }
 }

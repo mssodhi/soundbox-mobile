@@ -3,7 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap'
 
 import { ACTION } from '../../shared';
-import { FavoritesService, ProfileService } from '../services'
+import { FavoritesService, ProfileService, SCService } from '../services'
 
 @Injectable()
 export class Effects {
@@ -29,9 +29,17 @@ export class Effects {
       .map(res => ({ type: ACTION.LOAD_CHARTS_COMPLETED, payload: res }))
     );
 
+  @Effect() loadTrack$ = this.actions$
+    .ofType(ACTION.LOAD_TRACK)
+    .switchMap(action =>
+      this.scService.getPlayer(action.payload)
+        .map(res => ({ type: ACTION.LOAD_TRACK_COMPLETED, payload: { track: action.payload, player: res } }))
+    );
+
   constructor (private actions$: Actions,
                private profileService: ProfileService,
-               private favoritesService: FavoritesService
+               private favoritesService: FavoritesService,
+               private scService: SCService
   ) { }
 
 }
