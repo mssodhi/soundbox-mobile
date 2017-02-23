@@ -3,18 +3,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { ChartsPage } from '../pages/charts/charts';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SignInPage } from '../pages/signin/signin';
-import { PROFILE_REDUCER, FAVORITES_REDUCER, FavoritesService, ProfileService, Effects } from './shared';
+import { CHARTS_REDUCER, PROFILE_REDUCER, FAVORITES_REDUCER, FavoritesService, ProfileService, Effects } from './shared';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ChartsPage,
     HomePage,
     TabsPage,
     SignInPage
@@ -22,13 +20,12 @@ import { PROFILE_REDUCER, FAVORITES_REDUCER, FavoritesService, ProfileService, E
   imports: [
     IonicModule.forRoot(MyApp),
     EffectsModule.run(Effects),
-    StoreModule.provideStore({ PROFILE_REDUCER, FAVORITES_REDUCER })
+    StoreModule.provideStore({ CHARTS_REDUCER, PROFILE_REDUCER, FAVORITES_REDUCER })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ChartsPage,
     HomePage,
     TabsPage,
     SignInPage

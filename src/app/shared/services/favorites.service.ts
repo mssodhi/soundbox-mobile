@@ -15,4 +15,10 @@ export class FavoritesService {
       .map(res => res.json());
   }
 
+  getCharts(name: String) {
+    return this.http
+      .get(`/soundbox/api/charts/getByGenre/${name}`)
+      .map(res => res.json());
+  }
+
 }

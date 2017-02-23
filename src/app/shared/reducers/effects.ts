@@ -22,6 +22,13 @@ export class Effects {
       .map(res => ({ type: ACTION.LOAD_FAVORITES_COMPLETED, payload: res }))
     );
 
+  @Effect() loadCharts$ = this.actions$
+    .ofType(ACTION.LOAD_CHARTS)
+    .switchMap(action =>
+    this.favoritesService.getCharts(action.payload)
+      .map(res => ({ type: ACTION.LOAD_CHARTS_COMPLETED, payload: res }))
+    );
+
   constructor (private actions$: Actions,
                private profileService: ProfileService,
                private favoritesService: FavoritesService

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
@@ -9,7 +9,7 @@ import { ACTION, STATUS } from '../../app/shared';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
   user: any;
   favorites: any;
   subscription: Subscription;
@@ -37,10 +37,15 @@ export class HomePage implements OnInit {
   getFavorites() {
     this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: this.user.id });
     this.subscription = this.store.select<any>('FAVORITES_REDUCER')
+      .filter(state => state.status === STATUS.COMPLETED)
       .subscribe(state => this.favorites = state);
   }
 
   onSelect(track) {
     console.log(track);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

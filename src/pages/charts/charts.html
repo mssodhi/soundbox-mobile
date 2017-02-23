@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Charts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let obj of charts?.slice(0, 50)" (click)="onSelect(obj.track)">
+      <ion-avatar item-left >
+        <img [src]="obj.track.artwork_url" *ngIf="obj.track.artwork_url">
+      </ion-avatar>
+      <h2>{{obj.track.title}}</h2>
+      <p>{{obj.track.user.username}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
