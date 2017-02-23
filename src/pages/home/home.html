@@ -1,19 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>SoundBox</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let track of favorites?.tracks?.slice(0, 25)">
-    <span><img height="25px" width="25px" [src]="track.artwork_url">{{track.title}}</span>
-  </ion-item>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list>
+    <ion-item *ngFor="let track of favorites?.tracks?.slice(0, 25)" (click)="onSelect(track)">
+      <ion-avatar item-left>
+        <img [src]="track.artwork_url">
+      </ion-avatar>
+      <h2>{{track.title}}</h2>
+      <p>{{track.user.username}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

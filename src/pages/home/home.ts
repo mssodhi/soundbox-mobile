@@ -39,4 +39,8 @@ export class HomePage implements OnInit {
     this.subscription = this.store.select<any>('FAVORITES_REDUCER')
       .subscribe(state => this.favorites = state);
   }
+
+  onSelect(track) {
+    console.log(track);
+  }
 }
