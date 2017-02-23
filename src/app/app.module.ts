@@ -5,8 +5,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ChartsPage } from '../pages/charts/charts';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { SettingsPage } from '../pages/settings/settings';
 import { SignInPage } from '../pages/signin/signin';
+import { TabsPage } from '../pages/tabs/tabs';
 import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, FavoritesService, ProfileService, SCService, Effects, MusicPlayer } from './shared';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     ChartsPage,
     HomePage,
     TabsPage,
+    SettingsPage,
     SignInPage,
     MusicPlayer
   ],
@@ -29,6 +31,7 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     ChartsPage,
     HomePage,
     TabsPage,
+    SettingsPage,
     SignInPage,
     MusicPlayer
   ],

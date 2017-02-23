@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content settings">
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="user?.pic_url">
+      </ion-avatar>
+      <h2>{{user?.name}} Smith</h2>
+      <p>jackSmith@yahoo.com</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>General</ion-list-header>
+    <ion-item>
+      <ion-label>Notifications</ion-label>
+      <ion-toggle disabled checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item detail-push>
+      <h2>Quick Tutorial</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <h2>Version</h2>
+      <h2 item-right class="version">1.0-Beta</h2>
+    </ion-item>
+    <ion-item detail-push>
+      <h2>Rate SoundBox</h2>
+    </ion-item>
+    <ion-item class="contact">
+      <a href="mailto:mssodhi@ucdavis.edu?subject=SoundBox">Contact SoundBox</a>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

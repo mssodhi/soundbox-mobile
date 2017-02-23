@@ -14,7 +14,8 @@ export class ProfileService {
     // for not mocking demo account id: 1209
     let user = {
       id: '1209',
-      name: 'Demo'
+      name: 'Demo',
+      pic_url: ''
     };
 
     return Observable.create(observer => {
