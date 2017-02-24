@@ -36,6 +36,13 @@ export class Effects {
         .map(res => ({ type: ACTION.LOAD_TRACK_COMPLETED, payload: { track: action.payload, player: res } }))
     );
 
+  @Effect() loadSearch$ = this.actions$
+    .ofType(ACTION.LOAD_SEARCH)
+    .switchMap(action =>
+      this.scService.search(action.payload)
+        .map(res => ({ type: ACTION.LOAD_SEARCH_COMPLETED, payload: res }))
+    );
+
   constructor (private actions$: Actions,
                private profileService: ProfileService,
                private favoritesService: FavoritesService,

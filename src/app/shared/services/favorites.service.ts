@@ -6,8 +6,8 @@ export class FavoritesService {
   url: String = '';
 
   constructor(private http: Http) {
-    // this.url = '/soundbox';
-    this.url = 'http://mssodhi.me/soundbox';
+    this.url = '/soundbox';
+    // this.url = 'http://mssodhi.me/soundbox';
   }
 
   getFavorites(userId: any) {

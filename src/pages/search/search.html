@@ -7,5 +7,8 @@
 </ion-header>
 
 <ion-content>
-  <!--<track-list-item *ngFor="let obj of search?.results" [track]="track"></track-list-item>-->
+  <div *ngFor="let obj of results">
+    <track-list-item *ngIf="obj.kind === 'track'" [track]="obj"></track-list-item>
+    <user-list-item *ngIf="obj.kind === 'user'" [user]="obj"></user-list-item>
+  </div>
 </ion-content>

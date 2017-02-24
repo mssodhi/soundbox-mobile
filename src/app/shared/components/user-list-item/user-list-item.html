@@ -1,0 +1,7 @@
+<ion-item (click)="onSelect(user)" color="dark">
+  <ion-avatar item-left>
+    <img [src]="user.avatar_url">
+  </ion-avatar>
+  <h2>{{user.username}}</h2>
+  <p>Tracks: {{user.track_count}}</p>
+</ion-item>

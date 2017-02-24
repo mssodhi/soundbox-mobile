@@ -9,22 +9,24 @@ import { ACTION, STATUS } from '../../app/shared';
   selector: 'page-search',
   templateUrl: 'search.html'
 })
-export class SearchPage {
-  user: any;
+export class SearchPage implements OnDestroy {
+  subscription: Subscription;
+  results: any;
 
   constructor(public navCtrl: NavController, private store: Store<any>) {
-  this.store.select<any>('PROFILE_REDUCER')
-    .filter(state => state.status == STATUS.COMPLETED)
-    .first()
-    .subscribe(state => {
-      this.user = state.user;
-    });
+    this.subscription = this.store.select<any>('SEARCH_REDUCER')
+      .filter(state => state.status == STATUS.COMPLETED)
+      .subscribe(state => this.results = state.results );
   }
 
   search(input: String) {
     if(input) {
-      this.store.dispatch({ type: ACTION.SEARCH, payload: input });
+      this.store.dispatch({ type: ACTION.LOAD_SEARCH, payload: input });
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

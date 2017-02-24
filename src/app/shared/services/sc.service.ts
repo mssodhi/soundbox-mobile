@@ -15,4 +15,13 @@ export class SCService {
     });
   };
 
+  search(query: any) {
+    return Observable.create(observer => {
+      SC.get('/search/', {q: query, limit: 10}).then(res => {
+        observer.next(res.collection);
+        observer.complete();
+      });
+    });
+  }
+
 }

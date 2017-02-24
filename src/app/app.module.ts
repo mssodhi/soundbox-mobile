@@ -9,7 +9,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, FavoritesService, ProfileService, SCService, Effects, MusicPlayer, TrackListItem } from './shared';
+import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER, FavoritesService, ProfileService, SCService, Effects, MusicPlayer, TrackListItem, UserListItem } from './shared';
 
 @NgModule({
   declarations: [
@@ -21,12 +21,13 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     SettingsPage,
     SignInPage,
     MusicPlayer,
-    TrackListItem
+    TrackListItem,
+    UserListItem
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     EffectsModule.run(Effects),
-    StoreModule.provideStore({ CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER })
+    StoreModule.provideStore({ CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +39,8 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     SettingsPage,
     SignInPage,
     MusicPlayer,
-    TrackListItem
+    TrackListItem,
+    UserListItem
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProfileService, FavoritesService, SCService]
 })
