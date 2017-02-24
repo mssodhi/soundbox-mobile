@@ -10,6 +10,7 @@ export class ProfileService {
   url: String = '';
 
   constructor(private http: Http, private storage: Storage) {
+    // this.url = 'http://mssodhi.me/soundbox';
     this.url = '/soundbox';
   }
 
