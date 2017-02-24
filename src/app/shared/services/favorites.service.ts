@@ -1,13 +1,17 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class FavoritesService {
   url: String = '';
 
-  constructor(private http: Http) {
-    this.url = '/soundbox';
-    // this.url = 'http://mssodhi.me/soundbox';
+  constructor(private http: Http, private platform: Platform) {
+    if(this.platform.is('iPhone')){
+      this.url = 'http://mssodhi.me/soundbox';
+    } else {
+      this.url = '/soundbox';
+    }
   }
 
   getFavorites(userId: any) {
