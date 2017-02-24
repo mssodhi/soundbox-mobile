@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>{{state?.artist?.username}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Tracks</ion-list-header>
+    <track-list-item *ngFor="let track of state?.tracks" [track]="track"></track-list-item>
+  </ion-list>
+</ion-content>

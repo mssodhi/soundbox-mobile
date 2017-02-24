@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
+import { NavController } from 'ionic-angular';
 
-import { ACTION, STATUS } from "../../constants";
+import { ACTION, STATUS, ArtistComponent } from '../../../shared';
 
 @Component({
   selector: 'user-list-item',
@@ -10,10 +11,12 @@ import { ACTION, STATUS } from "../../constants";
 export class UserListItem {
   @Input() user: any;
 
-  constructor(private store: Store<any>) {}
+  constructor(public navCtrl: NavController, private store: Store<any>) {}
 
   onSelect(user) {
+    this.store.dispatch({ type: ACTION.LOAD_ARTIST, payload: user });
     console.log(user);
+    this.navCtrl.push(ArtistComponent);
   }
 
 }

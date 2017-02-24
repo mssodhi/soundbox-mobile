@@ -6,22 +6,27 @@ music-player {
 
   ion-footer {
     bottom: 48px;
+    border-top: 1px solid gray;
 
-    div {
-      width: 60%;
-      margin-right: 0;
-      display: inline-block;
-    }
+    ion-item {
+      background-color: rgba(40,40,40,1) !important;
+      color: white !important;
 
-    .item-ios.item-block .item-inner{
-      border-bottom: 0 !important;
-    }
+      div {
+        width: 60%;
+        margin-right: 0;
+        display: inline-block;
+        &.item-inner{
+          border-bottom: 0 !important;
+        }
+      }
 
-    ion-avatar {
-      button {
-        display: inline-block !important;
-        height: 40px !important;
-        width: 40px !important;
+      ion-avatar {
+        button {
+          display: inline-block !important;
+          height: 40px !important;
+          width: 40px !important;
+        }
       }
     }
   }
