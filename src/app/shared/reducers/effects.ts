@@ -50,6 +50,13 @@ export class Effects {
         .map(res => ({ type: ACTION.VERIFY_USER_COMPLETED, payload: res }))
     );
 
+  @Effect() loadGenres$ = this.actions$
+    .ofType(ACTION.LOAD_GENRES)
+    .switchMap(action =>
+      this.favoritesService.getGenres()
+        .map(res => ({ type: ACTION.LOAD_GENRES_COMPLETED, payload: res }))
+    );
+
   constructor (private actions$: Actions,
                private profileService: ProfileService,
                private favoritesService: FavoritesService,

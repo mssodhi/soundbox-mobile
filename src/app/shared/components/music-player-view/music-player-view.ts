@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -8,7 +8,7 @@ import { ACTION, STATUS } from "../../constants";
   selector: 'music-player-view',
   templateUrl: 'music-player-view.html'
 })
-export class MusicPlayerView implements OnInit {
+export class MusicPlayerView implements OnInit, OnDestroy {
   state: any;
   subscription: Subscription;
 
@@ -28,8 +28,8 @@ export class MusicPlayerView implements OnInit {
     }
   }
 
-  navigateToPlayer() {
-    console.log('nav');
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

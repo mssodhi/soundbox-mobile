@@ -23,4 +23,10 @@ export class FavoritesService {
       .map(res => res.json());
   }
 
+  getGenres() {
+    return this.http
+      .get(`${this.url}/api/charts/getGenres`)
+      .map(res => res.json());
+  }
+
 }

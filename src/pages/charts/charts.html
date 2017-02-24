@@ -1,11 +1,19 @@
 <ion-header>
-  <ion-navbar color="dark">
-    <ion-title>Charts</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Top Hits</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <track-list-item *ngFor="let obj of charts?.slice(0, 50)" [track]="obj.track"></track-list-item>
+    <ion-item>
+      <ion-label>Genre</ion-label>
+      <ion-select [(ngModel)]="currentGenre" (ngModelChange)="getCharts(currentGenre)">
+        <ion-option *ngFor="let genre of state?.genres" [value]="genre.value">{{genre.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <span *ngIf="state?.status === 'COMPLETED'">
+      <track-list-item *ngFor="let obj of state?.charts?.slice(0, 50)" [track]="obj.track"></track-list-item>
+    </span>
   </ion-list>
 </ion-content>

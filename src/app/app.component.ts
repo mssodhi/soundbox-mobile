@@ -36,7 +36,8 @@ export class MyApp {
           console.log(state);
           if(state.user && state.user.fb_id) {
 
-            this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: 'all-music'});
+            this.store.dispatch({ type: ACTION.LOAD_GENRES });
+            this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: 'all-music' });
             SC.initialize({
               client_id: '0f7c969c815f51078c1de513f666ecdb',
               secret_token: '4d27e9b3aab697fbee797b6b1495e408',

@@ -18,7 +18,7 @@
   <button ion-item (click)="navigateToFavorites()">Favorite Artists</button>
 
   <ion-list>
-    <ion-list-header style="color: gray">Music by favorites</ion-list-header>
+    <ion-list-header>Music by favorites</ion-list-header>
     <track-list-item *ngFor="let track of favorites?.tracks?.slice(0, 25)" [track]="track"></track-list-item>
   </ion-list>
 </ion-content>
