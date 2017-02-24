@@ -6,9 +6,10 @@ import { MyApp } from './app.component';
 import { ChartsPage } from '../pages/charts/charts';
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
+import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, FavoritesService, ProfileService, SCService, Effects, MusicPlayer } from './shared';
+import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, FavoritesService, ProfileService, SCService, Effects, MusicPlayer, TrackListItem } from './shared';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,11 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     ChartsPage,
     HomePage,
     TabsPage,
+    SearchPage,
     SettingsPage,
     SignInPage,
-    MusicPlayer
+    MusicPlayer,
+    TrackListItem
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -31,9 +34,11 @@ import { CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, Fav
     ChartsPage,
     HomePage,
     TabsPage,
+    SearchPage,
     SettingsPage,
     SignInPage,
-    MusicPlayer
+    MusicPlayer,
+    TrackListItem
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProfileService, FavoritesService, SCService]
 })

@@ -22,12 +22,4 @@ export class ChartsPage implements OnInit {
       });
   }
 
-  onSelect(track) {
-    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
-
-    this.store.select<any>('PLAYER_REDUCER')
-      .filter(state => state.status === STATUS.COMPLETED)
-      .first()
-      .subscribe(() => this.store.dispatch({ type: ACTION.PLAY }));
-  }
 }

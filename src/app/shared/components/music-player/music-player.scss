@@ -1,0 +1,28 @@
+music-player {
+
+  //ion-fab[bottom] {
+  //  bottom: 60px;
+  //}
+
+  ion-footer {
+    bottom: 50px;
+
+    div {
+      width: 60%;
+      margin-right: 0;
+      display: inline-block;
+    }
+
+    .item-ios.item-block .item-inner{
+      border-bottom: 0 !important;
+    }
+
+    ion-avatar {
+      button {
+        display: inline-block !important;
+        height: 40px !important;
+        width: 40px !important;
+      }
+    }
+  }
+}

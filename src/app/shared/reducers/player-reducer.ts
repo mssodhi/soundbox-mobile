@@ -1,4 +1,5 @@
 import { ActionReducer, Action } from '@ngrx/store';
+import { BackgroundMode } from 'ionic-native';
 
 import { ACTION, STATUS } from '../constants';
 
@@ -20,15 +21,15 @@ export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
 
     case ACTION.PLAY:
       state.player.play();
-      state.player.on('finish', () => {
-        state.isPlaying = false;
-      });
-
+      BackgroundMode.enable();
       return Object.assign({}, state, { isPlaying: true, status: STATUS.COMPLETED });
 
     case ACTION.PAUSE:
       state.player.pause();
       return Object.assign({}, state, { isPlaying: false, status: STATUS.COMPLETED });
+
+    case ACTION.UPDATE_STATE:
+      return Object.assign({}, state, { isPlaying: action.payload.isPlaying, status: STATUS.COMPLETED });
 
     default:
       return state;

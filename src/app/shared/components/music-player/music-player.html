@@ -1,8 +1,22 @@
-<ion-fab right bottom *ngIf="state?.player && state?.track">
-  <button ion-fab color="danger"><ion-icon name="musical-notes"></ion-icon></button>
-  <ion-fab-list side="left">
-    <button ion-fab color="dark"><ion-icon name="skip-forward"></ion-icon></button>
-    <button ion-fab color="primary" (click)="togglePlay()"><ion-icon [name]="state.isPlaying? 'pause': 'play'"></ion-icon></button>
-    <button ion-fab color="dark"><ion-icon name="skip-backward"></ion-icon></button>
-  </ion-fab-list>
-</ion-fab>
+<ion-footer *ngIf="state?.player && state?.track">
+  <ion-item color="dark">
+    <ion-avatar item-left>
+      <img [src]="state.track.artwork_url">
+    </ion-avatar>
+    <div>
+      <h2>{{state.track.title}}</h2>
+      <p>{{state.track.user.username}}</p>
+    </div>
+    <ion-avatar item-right>
+      <button right ion-fab color="primary" (click)="togglePlay()"><ion-icon [name]="state.isPlaying? 'pause': 'play'"></ion-icon></button>
+    </ion-avatar>
+  </ion-item>
+</ion-footer>
+<!--<ion-fab right bottom *ngIf="state?.player && state?.track">-->
+  <!--<button ion-fab color="danger"><ion-icon name="musical-notes"></ion-icon></button>-->
+  <!--<ion-fab-list side="left">-->
+    <!--<button ion-fab color="dark"><ion-icon name="skip-forward"></ion-icon></button>-->
+    <!--<button ion-fab color="primary" (click)="togglePlay()"><ion-icon [name]="state.isPlaying? 'pause': 'play'"></ion-icon></button>-->
+    <!--<button ion-fab color="dark"><ion-icon name="skip-backward"></ion-icon></button>-->
+  <!--</ion-fab-list>-->
+<!--</ion-fab>-->

@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-searchbar [showCancelButton]="true"
+                   (ionInput)="search($event.target.value)"
+                   (ionCancel)="navCtrl.pop()"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--<track-list-item *ngFor="let obj of search?.results" [track]="track"></track-list-item>-->
+</ion-content>

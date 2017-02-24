@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ACTION, STATUS } from '../../app/shared';
+import { SearchPage } from '../search/search';
 
 @Component({
   selector: 'page-home',
@@ -35,12 +36,8 @@ export class HomePage implements OnInit, OnDestroy {
       .subscribe(state => this.favorites = state);
   }
 
-  onSelect(track) {
-    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
-    this.store.select<any>('PLAYER_REDUCER')
-      .filter(state => state.status === STATUS.COMPLETED)
-      .first()
-      .subscribe(state => this.store.dispatch({ type: ACTION.PLAY }));
+  onSelectSearch() {
+    this.navCtrl.push(SearchPage);
   }
 
   ngOnDestroy() {

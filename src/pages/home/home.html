@@ -1,17 +1,19 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onSelectSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>SoundBox</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let track of favorites?.tracks?.slice(0, 25)" (click)="onSelect(track)">
-      <ion-avatar item-left>
-        <img [src]="track.artwork_url">
-      </ion-avatar>
-      <h2>{{track.title}}</h2>
-      <p>{{track.user.username}}</p>
-    </ion-item>
-  </ion-list>
+  <track-list-item *ngFor="let track of favorites?.tracks?.slice(0, 25)" [track]="track"></track-list-item>
 </ion-content>
