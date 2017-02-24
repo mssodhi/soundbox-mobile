@@ -1,10 +1,47 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>{{state?.artist?.username}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="state?.artist">
+  <ion-card color="dark">
+    <div class="upper-card">
+      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2859%29.jpg">
+    </div>
+    <img class="avatar" [src]="state.artist.avatar_url">
+    <ion-card-header>
+      {{state.artist.username}}
+    </ion-card-header>
+    <ion-card-content>
+      {{state.artist.desciption}}
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='star'></ion-icon>
+          Favorite
+        </button>
+      </ion-col>
+      <!--<ion-col text-center>-->
+        <!--<button ion-button clear small color="danger" icon-left>-->
+          <!--<ion-icon name='musical-notes'></ion-icon>-->
+          <!--Listen-->
+        <!--</button>-->
+      <!--</ion-col>-->
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
   <ion-list>
     <ion-list-header>Tracks</ion-list-header>
     <track-list-item *ngFor="let track of state?.tracks" [track]="track"></track-list-item>

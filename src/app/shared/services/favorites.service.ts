@@ -7,11 +7,11 @@ export class FavoritesService {
   url: String = '';
 
   constructor(private http: Http, private platform: Platform) {
-    if(this.platform.is('iphone')){
-      this.url = 'http://mssodhi.me/soundbox';
-    } else {
+    // if(this.platform.is('iphone')){
+    //   this.url = 'http://mssodhi.me/soundbox';
+    // } else {
       this.url = '/soundbox';
-    }
+    // }
   }
 
   getFavorites(userId: any) {

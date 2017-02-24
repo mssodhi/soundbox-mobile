@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
+import { NavController } from 'ionic-angular';
 
-import { ACTION, STATUS } from "../../constants";
+import { ACTION, STATUS, ArtistComponent } from "../../../shared";
 
 @Component({
   selector: 'track-list-item',
@@ -10,7 +11,7 @@ import { ACTION, STATUS } from "../../constants";
 export class TrackListItem {
   @Input() track: any;
 
-  constructor(private store: Store<any>) {}
+  constructor(private navCtrl: NavController, private store: Store<any>) {}
 
   onSelect(track) {
     this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
@@ -27,4 +28,8 @@ export class TrackListItem {
       });
   }
 
+  navigateToArtist(artist) {
+    this.store.dispatch({ type: ACTION.LOAD_ARTIST, payload: artist });
+    this.navCtrl.push(ArtistComponent);
+  }
 }

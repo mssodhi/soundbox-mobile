@@ -1,7 +1,23 @@
-<ion-item (click)="onSelect(track)" color="dark">
-  <ion-avatar item-left>
-    <img [src]="track.artwork_url">
-  </ion-avatar>
-  <h2>{{track.title}}</h2>
-  <p>{{track.user.username}}</p>
-</ion-item>
+<ion-item-sliding>
+  <ion-item (click)="onSelect(track)" color="dark">
+    <ion-avatar item-left>
+      <img [src]="track.artwork_url">
+    </ion-avatar>
+    <h2>{{track.title}}</h2>
+    <p>{{track.user.username}}</p>
+  </ion-item>
+  <ion-item-options side="right">
+    <button ion-button color="primary" (click)="navigateToArtist(track.user)">
+      <ion-icon name="person"></ion-icon>
+      View artist
+    </button>
+    <button ion-button color="danger">
+      <ion-icon name="heart"></ion-icon>
+      Like
+    </button>
+    <button ion-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+      Playlist
+    </button>
+  </ion-item-options>
+</ion-item-sliding>
