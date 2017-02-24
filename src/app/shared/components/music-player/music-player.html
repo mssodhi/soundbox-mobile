@@ -1,9 +1,12 @@
 <ion-footer *ngIf="state?.player && state?.track">
+  <div id="progress-bar" class="music-bar-background">
+    <div class="music-bar" [style.width]="(state.player.currentTime()/state.track.duration)*100 + '%'"></div>
+  </div>
   <ion-item>
-    <ion-avatar item-left>
+    <ion-avatar item-left (click)="navigateToPlayer()">
       <img [src]="state.track.artwork_url">
     </ion-avatar>
-    <div>
+    <div (click)="navigateToPlayer()">
       <h2>{{state.track.title}}</h2>
       <p>{{state.track.user.username}}</p>
     </div>

@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS, MusicPlayerView } from "../../../shared";
+import { ACTION, STATUS } from "../../constants";
 
 @Component({
-  selector: 'music-player',
-  templateUrl: 'music-player.html'
+  selector: 'music-player-view',
+  templateUrl: 'music-player-view.html'
 })
-export class MusicPlayer implements OnInit {
+export class MusicPlayerView implements OnInit {
   state: any;
   subscription: Subscription;
 
-  constructor(private navCtrl: NavController, private store: Store<any>) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
     this.subscription = this.store.select<any>('PLAYER_REDUCER')
@@ -30,7 +29,7 @@ export class MusicPlayer implements OnInit {
   }
 
   navigateToPlayer() {
-    this.navCtrl.push(MusicPlayerView);
+    console.log('nav');
   }
 
 }
