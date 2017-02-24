@@ -1,27 +1,31 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs';
 
 // import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProfileService {
+  url: String = '';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private storage: Storage) {
+    this.url = '/soundbox';
+  }
 
   getProfile() {
-    // check and return a user obj from local ionic storage
-    // for not mocking demo account id: 1209
-    let user = {
-      id: '1209',
-      name: 'Demo',
-      pic_url: ''
-    };
-
     return Observable.create(observer => {
-      observer.next(user);
-      observer.complete();
+      this.storage.get('profile').then((val) => {
+        observer.next(val);
+        observer.complete();
+      });
     });
+  };
+
+  verifyUser(userId, name) {
+    return this.http
+      .put(`${this.url}/api/login/checkUser/${userId}`, name)
+      .map(res => res.json());
   };
 
 }

@@ -16,6 +16,12 @@ export const PROFILE_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: 
     case ACTION.LOAD_PROFILE_COMPLETED:
       return Object.assign({}, state, { user: action.payload, status: STATUS.COMPLETED });
 
+    case ACTION.VERIFY_USER:
+      return Object.assign({}, state, { status: STATUS.IN_PROGRESS });
+
+    case ACTION.VERIFY_USER_COMPLETED:
+      return Object.assign({}, state, { user: action.payload, status: STATUS.COMPLETED });
+
     default:
       return state;
   }

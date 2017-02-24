@@ -30,7 +30,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   getFavorites() {
-    this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: this.user.id });
+    this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: this.user.fb_id });
     this.subscription = this.store.select<any>('FAVORITES_REDUCER')
       .filter(state => state.status === STATUS.COMPLETED)
       .subscribe(state => this.favorites = state);

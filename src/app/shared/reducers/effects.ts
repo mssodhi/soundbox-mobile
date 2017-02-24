@@ -43,6 +43,13 @@ export class Effects {
         .map(res => ({ type: ACTION.LOAD_SEARCH_COMPLETED, payload: res }))
     );
 
+  @Effect() verifyUser$ = this.actions$
+    .ofType(ACTION.VERIFY_USER)
+    .switchMap(action =>
+      this.profileService.verifyUser(action.payload.fb_id, action.payload.name)
+        .map(res => ({ type: ACTION.VERIFY_USER_COMPLETED, payload: res }))
+    );
+
   constructor (private actions$: Actions,
                private profileService: ProfileService,
                private favoritesService: FavoritesService,

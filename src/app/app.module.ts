@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { ChartsPage } from '../pages/charts/charts';
 import { HomePage } from '../pages/home/home';
@@ -44,6 +45,6 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     TrackListItem,
     UserListItem
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProfileService, FavoritesService, SCService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ProfileService, FavoritesService, SCService, Storage]
 })
 export class AppModule {}
