@@ -10,13 +10,15 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER, FavoritesService, ProfileService, SCService, Effects, ArtistComponent, MusicPlayer, TrackListItem, UserListItem } from './shared';
+import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER,
+  FavoritesService, ProfileService, SCService, Effects, ArtistComponent, FavoritesListComponent, MusicPlayer, TrackListItem, UserListItem } from './shared';
 
 @NgModule({
   declarations: [
     MyApp,
     ArtistComponent,
     ChartsPage,
+    FavoritesListComponent,
     HomePage,
     TabsPage,
     SearchPage,
@@ -36,6 +38,7 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     MyApp,
     ArtistComponent,
     ChartsPage,
+    FavoritesListComponent,
     HomePage,
     TabsPage,
     SearchPage,

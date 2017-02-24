@@ -1,5 +1,11 @@
 artist-component {
+  ion-content {
+    background-color: #222 !important;
 
+    ion-list-header {
+      color: gray !important;
+    }
+  }
   ion-card {
     text-align: center;
     .upper-card {

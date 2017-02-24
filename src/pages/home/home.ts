@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS } from '../../app/shared';
+import { ACTION, STATUS, FavoritesListComponent } from '../../app/shared';
 import { SearchPage } from '../search/search';
 
 @Component({
@@ -38,6 +38,10 @@ export class HomePage implements OnInit, OnDestroy {
 
   onSelectSearch() {
     this.navCtrl.push(SearchPage);
+  }
+
+  navigateToFavorites() {
+    this.navCtrl.push(FavoritesListComponent);
   }
 
   ngOnDestroy() {

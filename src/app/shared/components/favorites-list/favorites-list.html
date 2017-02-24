@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Favorites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <user-list-item *ngFor="let user of state?.favorites" [user]="user"></user-list-item>
+  </ion-list>
+</ion-content>
