@@ -5,19 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <div id="progress-bar" class="music-bar-background">
+  <ion-avatar>
+    <img [src]="state.track.artwork_url">
+  </ion-avatar>
+
+  <h2>{{state.track.title}}</h2>
+  <p>{{state.track.user.username}}</p>
+
+  <div class="music-bar-background">
     <div class="music-bar" [style.width]="(state.player.currentTime()/state.track.duration)*100 + '%'"></div>
   </div>
-  <ion-item>
-    <ion-avatar item-left>
-      <img [src]="state.track.artwork_url">
-    </ion-avatar>
-    <div>
-      <h2>{{state.track.title}}</h2>
-      <p>{{state.track.user.username}}</p>
-    </div>
-    <ion-avatar item-right>
-      <button right ion-fab color="primary" (click)="togglePlay()"><ion-icon [name]="state.isPlaying? 'pause': 'play'"></ion-icon></button>
-    </ion-avatar>
-  </ion-item>
+  <span class="current">{{milliToTime(state.player.currentTime())}}</span>
+  <span class="duration">{{milliToTime(state.track.duration)}}</span>
+
+  <div class="player-actions">
+    <button ion-fab color="light" (click)="skipBackward()"><ion-icon name="skip-backward"></ion-icon></button>
+    <button ion-fab color="primary" (click)="togglePlay()"><ion-icon [name]="state.isPlaying? 'pause': 'play'"></ion-icon></button>
+    <button ion-fab color="light" (click)="skipForward()"><ion-icon name="skip-forward"></ion-icon></button>
+  </div>
+
 </ion-content>

@@ -31,6 +31,10 @@ export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
     case ACTION.UPDATE_STATE:
       return Object.assign({}, state, { isPlaying: action.payload.isPlaying, status: STATUS.COMPLETED });
 
+    case ACTION.SEEK:
+      state.player.seek(action.payload);
+      return Object.assign({}, state, { status: STATUS.COMPLETED });
+
     default:
       return state;
   }

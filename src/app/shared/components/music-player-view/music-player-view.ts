@@ -28,6 +28,20 @@ export class MusicPlayerView implements OnInit, OnDestroy {
     }
   }
 
+  skipForward() {
+    console.log('next');
+  }
+
+  skipBackward() {
+    console.log('back');
+  }
+
+  milliToTime(milli: number) {
+    let minutes = Math.floor(milli / 60000);
+    let seconds = parseInt(((milli % 60000) / 1000).toFixed(0));
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
