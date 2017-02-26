@@ -47,16 +47,20 @@ export class MusicPlayerView implements OnInit, OnDestroy {
   }
 
   skipForward() {
-    let currentIndex = this.state.tracks.indexOf(this.state.track);
-    if(currentIndex + 1 < this.state.tracks.length) {
-      this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex + 1]});
+    if(this.canSkipForward()) {
+      let currentIndex = this.state.tracks.indexOf(this.state.track);
+      if(currentIndex + 1 < this.state.tracks.length) {
+        this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex + 1]});
+      }
     }
   }
 
   skipBackward() {
-    let currentIndex = this.state.tracks.indexOf(this.state.track);
-    if(currentIndex - 1 >= 0) {
-      this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex - 1]});
+    if(this.canSkipBackward()) {
+      let currentIndex = this.state.tracks.indexOf(this.state.track);
+      if(currentIndex - 1 >= 0) {
+        this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex - 1]});
+      }
     }
   }
 
