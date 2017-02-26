@@ -11,8 +11,14 @@ import { STATUS } from '../../constants';
 export class FavoritesListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   state: any;
+  playerState: any;
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<any>) {
+    this.store.select<any>('PLAYER_REDUCER')
+      .filter(state => state.status === STATUS.COMPLETED)
+      .first()
+      .subscribe(state => this.playerState = state );
+  }
 
   ngOnInit() {
     this.subscription = this.store.select<any>('FAVORITES_REDUCER')

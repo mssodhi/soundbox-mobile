@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list [class.addSpace]="playerState?.track?.id">
     <user-list-item *ngFor="let user of state?.favorites" [user]="user"></user-list-item>
   </ion-list>
 </ion-content>
