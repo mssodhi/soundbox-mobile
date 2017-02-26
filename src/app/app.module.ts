@@ -12,7 +12,7 @@ import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER,
   FavoritesService, ProfileService, SCService, Effects, MilliToTime,
-  ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerView, TrackListItem, UserListItem } from './shared';
+  ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerView, TrackList, TrackListItem, UserListItem } from './shared';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     SignInPage,
     MusicPlayer,
     MusicPlayerView,
+    TrackList,
     TrackListItem,
     UserListItem,
     MilliToTime
@@ -49,6 +50,7 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     SignInPage,
     MusicPlayer,
     MusicPlayerView,
+    TrackList,
     TrackListItem,
     UserListItem
   ],

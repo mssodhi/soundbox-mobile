@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController, NavParams } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS } from "../../constants";
+import { STATUS } from '../../constants';
 
 @Component({
   selector: 'artist-component',

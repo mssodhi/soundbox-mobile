@@ -1,0 +1,6 @@
+<ion-list *ngIf="tracks?.length > 0" [class.addSpace]="state?.track?.id">
+  <ion-list-header>
+    <button ion-fab (click)="shuffle()"> Play </button>
+  </ion-list-header>
+  <track-list-item *ngFor="let track of tracks" [track]="track"></track-list-item>
+</ion-list>

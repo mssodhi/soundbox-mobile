@@ -13,7 +13,7 @@
       </ion-select>
     </ion-item>
     <span *ngIf="state?.status === 'COMPLETED'">
-      <track-list-item *ngFor="let obj of state?.charts?.slice(0, 50)" [track]="obj.track"></track-list-item>
+      <track-list [tracks]="flattenCharts()"></track-list>
     </span>
   </ion-list>
 </ion-content>

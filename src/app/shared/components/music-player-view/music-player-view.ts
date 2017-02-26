@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS } from "../../constants";
+import { ACTION, STATUS } from '../../constants';
 
 @Component({
   selector: 'music-player-view',

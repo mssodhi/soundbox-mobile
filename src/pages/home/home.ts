@@ -23,17 +23,10 @@ export class HomePage implements OnInit, OnDestroy {
     this.store.select<any>('PROFILE_REDUCER')
       .filter(state => state.status == STATUS.COMPLETED)
       .first()
-      .subscribe(state => {
-        this.user = state.user;
-        this.getFavorites();
-      });
-  }
-
-  getFavorites() {
-    this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: this.user.fb_id });
+      .subscribe(state => this.user = state.user );
     this.subscription = this.store.select<any>('FAVORITES_REDUCER')
       .filter(state => state.status === STATUS.COMPLETED)
-      .subscribe(state => this.favorites = state);
+      .subscribe(state => this.favorites = state );
   }
 
   onSelectSearch() {
@@ -42,12 +35,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   navigateToFavorites() {
     this.navCtrl.push(FavoritesListComponent);
-  }
-
-  shufflePlay() {
-    let tracks = this.favorites.tracks.slice(0, 50).map(track => track).sort((a, b) => Math.random() - Math.random());
-    this.store.dispatch({ type: ACTION.SHUFFLE, payload: tracks });
-    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: tracks[0] });
   }
 
   ngOnDestroy() {

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS, MusicPlayerView } from "../../../shared";
+import { ACTION, STATUS, MusicPlayerView } from '../../../shared';
 
 @Component({
   selector: 'music-player',

@@ -23,15 +23,19 @@ export class ChartsPage implements OnInit, OnDestroy {
   }
 
   getCharts(genre) {
+    this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: genre });
     let loading = this.loadingCtrl.create({
       content: 'loading...'
     });
     loading.present();
-    this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: genre });
     this.store.select<any>('CHARTS_REDUCER')
       .filter(state => state.status === STATUS.COMPLETED)
       .first()
       .subscribe(() => loading.dismiss() );
+  }
+
+  flattenCharts() {
+    return this.state.charts.slice(0, 50).map(obj => obj.track);
   }
 
   ngOnDestroy() {

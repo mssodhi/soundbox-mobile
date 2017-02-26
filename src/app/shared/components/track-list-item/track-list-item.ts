@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 
-import { ACTION, ArtistComponent } from "../../../shared";
+import { ACTION, ArtistComponent } from '../../../shared';
 
 @Component({
   selector: 'track-list-item',
