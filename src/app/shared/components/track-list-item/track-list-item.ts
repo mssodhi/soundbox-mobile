@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 
-import { ACTION, STATUS, ArtistComponent } from "../../../shared";
+import { ACTION, ArtistComponent } from "../../../shared";
 
 @Component({
   selector: 'track-list-item',
@@ -15,17 +15,6 @@ export class TrackListItem {
 
   onSelect(track) {
     this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: track });
-    this.store.select<any>('PLAYER_REDUCER')
-      .filter(state => state.status === STATUS.COMPLETED)
-      .first()
-      .subscribe(state => {
-        this.store.dispatch({ type: ACTION.PLAY });
-        state.player.on('finish', () => {
-          this.store.dispatch({ type: ACTION.UPDATE_STATE, payload: {isPlaying: false} });
-          // getNext and play song
-          // this.store.dispatch({ type: ACTION.NEXT });
-        });
-      });
   }
 
   navigateToArtist(artist) {

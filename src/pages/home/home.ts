@@ -44,6 +44,12 @@ export class HomePage implements OnInit, OnDestroy {
     this.navCtrl.push(FavoritesListComponent);
   }
 
+  shufflePlay() {
+    let tracks = this.favorites.tracks.slice(0, 50).map(track => track).sort((a, b) => Math.random() - Math.random());
+    this.store.dispatch({ type: ACTION.SHUFFLE, payload: tracks });
+    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: tracks[0] });
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

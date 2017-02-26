@@ -11,7 +11,8 @@ import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER,
-  FavoritesService, ProfileService, SCService, Effects, ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerView, TrackListItem, UserListItem } from './shared';
+  FavoritesService, ProfileService, SCService, Effects, MilliToTime,
+  ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerView, TrackListItem, UserListItem } from './shared';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     MusicPlayer,
     MusicPlayerView,
     TrackListItem,
-    UserListItem
+    UserListItem,
+    MilliToTime
   ],
   imports: [
     IonicModule.forRoot(MyApp),

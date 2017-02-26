@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMap'
 
-import { ACTION } from '../../shared';
+import { ACTION, STATUS } from '../../shared';
 import { FavoritesService, ProfileService, SCService } from '../services'
 
 @Injectable()
@@ -33,7 +34,22 @@ export class Effects {
     .ofType(ACTION.LOAD_TRACK)
     .switchMap(action =>
       this.scService.getPlayer(action.payload)
-        .map(res => ({ type: ACTION.LOAD_TRACK_COMPLETED, payload: { track: action.payload, player: res } }))
+        .map(res => {
+          this.store.select<any>('PLAYER_REDUCER')
+            .filter(state => state.status === STATUS.COMPLETED)
+            .subscribe(state => {
+              state.player.on('finish', () => {
+                this.store.dispatch({ type: ACTION.UPDATE_STATE, payload: {isPlaying: false} });
+                if(state.tracks && state.tracks.length > 0) {
+                  let currentIndex = state.tracks.indexOf(state.track);
+                  if(currentIndex + 1 < state.tracks.length) {
+                    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: state.tracks[currentIndex + 1]});
+                  }
+                }
+              });
+            });
+          return ({ type: ACTION.LOAD_TRACK_COMPLETED, payload: { track: action.payload, player: res } });
+        })
     );
 
   @Effect() loadSearch$ = this.actions$
@@ -60,7 +76,8 @@ export class Effects {
   constructor (private actions$: Actions,
                private profileService: ProfileService,
                private favoritesService: FavoritesService,
-               private scService: SCService
+               private scService: SCService,
+               private store: Store<any>
   ) { }
 
 }

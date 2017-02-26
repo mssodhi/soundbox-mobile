@@ -28,18 +28,36 @@ export class MusicPlayerView implements OnInit, OnDestroy {
     }
   }
 
+  canSkipForward() {
+    if(this.state.tracks && this.state.tracks.length > 0) {
+      let currentIndex = this.state.tracks.indexOf(this.state.track);
+      return currentIndex + 1 < this.state.tracks.length;
+    } else {
+      return false;
+    }
+  }
+
+  canSkipBackward() {
+    if(this.state.tracks && this.state.tracks.length > 0) {
+      let currentIndex = this.state.tracks.indexOf(this.state.track);
+      return currentIndex - 1 >= 0;
+    } else {
+      return false;
+    }
+  }
+
   skipForward() {
-    console.log('next');
+    let currentIndex = this.state.tracks.indexOf(this.state.track);
+    if(currentIndex + 1 < this.state.tracks.length) {
+      this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex + 1]});
+    }
   }
 
   skipBackward() {
-    console.log('back');
-  }
-
-  milliToTime(milli: number) {
-    let minutes = Math.floor(milli / 60000);
-    let seconds = parseInt(((milli % 60000) / 1000).toFixed(0));
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    let currentIndex = this.state.tracks.indexOf(this.state.track);
+    if(currentIndex - 1 >= 0) {
+      this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: this.state.tracks[currentIndex - 1]});
+    }
   }
 
   ngOnDestroy() {

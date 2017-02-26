@@ -6,6 +6,7 @@ import { ACTION, STATUS } from '../constants';
 const INIT_STATE = {
   player: null,
   track: null,
+  tracks: null,
   isPlaying: null,
   status: null
 };
@@ -14,10 +15,13 @@ export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
   switch (action.type) {
 
     case ACTION.LOAD_TRACK:
-      return Object.assign({}, INIT_STATE, { status: STATUS.IN_PROGRESS });
+      return Object.assign({}, state, { status: STATUS.IN_PROGRESS });
 
     case ACTION.LOAD_TRACK_COMPLETED:
-      return Object.assign({}, state, { track: action.payload.track, player: action.payload.player, status: STATUS.COMPLETED });
+      state.player = action.payload.player;
+      state.player.play();
+      BackgroundMode.enable();
+      return Object.assign({}, state, { track: action.payload.track, player: action.payload.player, isPlaying: true, status: STATUS.COMPLETED });
 
     case ACTION.PLAY:
       state.player.play();
@@ -34,6 +38,10 @@ export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
     case ACTION.SEEK:
       state.player.seek(action.payload);
       return Object.assign({}, state, { status: STATUS.COMPLETED });
+
+    case ACTION.SHUFFLE:
+      console.log(action.payload);
+      return Object.assign({}, state, { tracks: action.payload, status: STATUS.COMPLETED });
 
     default:
       return state;
