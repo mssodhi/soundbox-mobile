@@ -40,7 +40,6 @@ export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
       return Object.assign({}, state, { status: STATUS.COMPLETED });
 
     case ACTION.SHUFFLE:
-      console.log(action.payload);
       return Object.assign({}, state, { tracks: action.payload, status: STATUS.COMPLETED });
 
     default:

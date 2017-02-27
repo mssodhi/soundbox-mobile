@@ -7,7 +7,7 @@ import { STATUS } from '../../constants';
 
 @Component({
   selector: 'artist-component',
-  templateUrl: 'artist.html'
+  templateUrl: 'artist-component.html'
 })
 export class ArtistComponent implements OnInit, OnDestroy {
   subscription: Subscription;

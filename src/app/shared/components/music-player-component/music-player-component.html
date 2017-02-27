@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-avatar>
+  <ion-avatar *ngIf="state.track.artwork_url">
     <img [src]="state.track.artwork_url">
   </ion-avatar>
 

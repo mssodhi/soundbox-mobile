@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ACTION, STATUS, MusicPlayerView } from '../../../shared';
+import { ACTION, STATUS, MusicPlayerComponent } from '../../../shared';
 
 @Component({
   selector: 'music-player',
@@ -30,7 +30,7 @@ export class MusicPlayer implements OnInit {
   }
 
   navigateToPlayer() {
-    this.navCtrl.push(MusicPlayerView);
+    this.navCtrl.push(MusicPlayerComponent);
   }
 
 }

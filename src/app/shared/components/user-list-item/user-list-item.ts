@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NavController } from 'ionic-angular';
 
-import { ACTION, STATUS, ArtistComponent } from '../../../shared';
+import { ACTION, ArtistComponent } from '../../../shared';
 
 @Component({
   selector: 'user-list-item',
@@ -15,7 +15,6 @@ export class UserListItem {
 
   onSelect(user) {
     this.store.dispatch({ type: ACTION.LOAD_ARTIST, payload: user });
-    console.log(user);
     this.navCtrl.push(ArtistComponent);
   }
 

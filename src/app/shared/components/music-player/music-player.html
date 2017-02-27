@@ -3,7 +3,7 @@
     <div class="music-bar" [style.width]="(state.player.currentTime()/state.track.duration)*100 + '%'"></div>
   </div>
   <ion-item>
-    <ion-avatar item-left (click)="navigateToPlayer()">
+    <ion-avatar *ngIf="state.track.artwork_url" item-left (click)="navigateToPlayer()">
       <img [src]="state.track.artwork_url">
     </ion-avatar>
     <div (click)="navigateToPlayer()">

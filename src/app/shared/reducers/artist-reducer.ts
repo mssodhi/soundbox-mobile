@@ -12,14 +12,10 @@ export const ARTIST_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: A
   switch (action.type) {
 
     case ACTION.LOAD_ARTIST:
-      let tracks = [];
+      return Object.assign({}, state, { artist: action.payload, status: STATUS.IN_PROGRESS });
 
-      SC.get('/tracks', {user_id: action.payload.id}).then(res => {
-        res.forEach(track => {
-          tracks.push(track);
-        })
-      });
-      return Object.assign({}, state, { artist: action.payload, tracks: tracks, status: STATUS.COMPLETED });
+    case ACTION.LOAD_ARTIST_COMPLETED:
+      return Object.assign({}, state, { tracks: action.payload, status: STATUS.COMPLETED });
 
     default:
       return state;

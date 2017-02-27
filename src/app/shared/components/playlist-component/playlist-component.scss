@@ -1,0 +1,25 @@
+playlist-component {
+  ion-content {
+    background-color: #222 !important;
+
+    ion-list-header {
+      color: gray !important;
+    }
+  }
+  ion-card {
+    text-align: center;
+    .upper-card {
+      overflow: hidden;
+      img {
+        max-height: 115px;
+      }
+    }
+    .avatar {
+      border-radius: 100%;
+      margin: -50px auto auto auto;
+      width: 40%;
+    }
+
+  }
+
+}

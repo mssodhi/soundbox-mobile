@@ -30,12 +30,6 @@ export const FAVORITES_REDUCER: ActionReducer<any> = (state = INIT_STATE, action
       });
       return Object.assign({}, state, { favorites: favorites, tracks: tracks, status: STATUS.COMPLETED });
 
-    case ACTION.LOAD_TRACKS_FAVORITES:
-      return Object.assign({}, state);
-
-    case ACTION.LOAD_TRACKS_FAVORITES_COMPLETED:
-      return Object.assign({}, state, { status: STATUS.COMPLETED });
-
     default:
       return state;
   }

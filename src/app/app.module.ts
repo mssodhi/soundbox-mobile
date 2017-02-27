@@ -10,9 +10,9 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER,
+import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PLAYLIST_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER,
   FavoritesService, ProfileService, SCService, Effects, MilliToTime,
-  ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerView, TrackList, TrackListItem, UserListItem } from './shared';
+  ArtistComponent, FavoritesListComponent, MusicPlayer, MusicPlayerComponent, PlaylistComponent, PlaylistListComponent, TrackList, TrackListItem, UserListItem } from './shared';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,9 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     SettingsPage,
     SignInPage,
     MusicPlayer,
-    MusicPlayerView,
+    MusicPlayerComponent,
+    PlaylistComponent,
+    PlaylistListComponent,
     TrackList,
     TrackListItem,
     UserListItem,
@@ -35,7 +37,7 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
   imports: [
     IonicModule.forRoot(MyApp),
     EffectsModule.run(Effects),
-    StoreModule.provideStore({ ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER })
+    StoreModule.provideStore({ ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PLAYLIST_REDUCER, PROFILE_REDUCER, SEARCH_REDUCER })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +51,9 @@ import { ARTIST_REDUCER, CHARTS_REDUCER, FAVORITES_REDUCER, PLAYER_REDUCER, PROF
     SettingsPage,
     SignInPage,
     MusicPlayer,
-    MusicPlayerView,
+    MusicPlayerComponent,
+    PlaylistComponent,
+    PlaylistListComponent,
     TrackList,
     TrackListItem,
     UserListItem

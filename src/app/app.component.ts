@@ -31,11 +31,12 @@ export class MyApp {
       this.store.dispatch({ type: ACTION.LOAD_PROFILE });
       this.store.select<any>('PROFILE_REDUCER')
         .filter(state => state.status == STATUS.COMPLETED)
-        .first()
+        .distinctUntilChanged()
         .subscribe(state => {
           console.log(state);
           if(state.user && state.user.fb_id) {
             this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: state.user.fb_id });
+            this.store.dispatch({ type: ACTION.LOAD_PLAYLISTS, payload: state.user.fb_id });
             this.store.dispatch({ type: ACTION.LOAD_GENRES });
             this.store.dispatch({ type: ACTION.LOAD_CHARTS, payload: 'all-music' });
 

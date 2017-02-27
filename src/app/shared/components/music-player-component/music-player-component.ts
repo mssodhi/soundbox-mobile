@@ -5,10 +5,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { ACTION, STATUS } from '../../constants';
 
 @Component({
-  selector: 'music-player-view',
-  templateUrl: 'music-player-view.html'
+  selector: 'music-player-component',
+  templateUrl: 'music-player-component.html'
 })
-export class MusicPlayerView implements OnInit, OnDestroy {
+export class MusicPlayerComponent implements OnInit, OnDestroy {
+
   state: any;
   subscription: Subscription;
 
@@ -21,7 +22,6 @@ export class MusicPlayerView implements OnInit, OnDestroy {
   }
 
   seek(value) {
-    console.log(value);
     this.store.dispatch({ type: ACTION.SEEK, payload: value });
   }
 

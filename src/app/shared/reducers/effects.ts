@@ -23,6 +23,27 @@ export class Effects {
       .map(res => ({ type: ACTION.LOAD_FAVORITES_COMPLETED, payload: res }))
     );
 
+  @Effect() loadPlaylists$ = this.actions$
+    .ofType(ACTION.LOAD_PLAYLISTS)
+    .switchMap(action =>
+    this.favoritesService.getPlaylists(action.payload)
+      .map(res => ({ type: ACTION.LOAD_PLAYLISTS_COMPLETED, payload: res }))
+    );
+
+  @Effect() loadPlaylist$ = this.actions$
+    .ofType(ACTION.LOAD_PLAYLIST)
+    .switchMap(action =>
+    this.favoritesService.loadPlaylist(action.payload)
+      .map(res => ({ type: ACTION.LOAD_PLAYLIST_COMPLETED, payload: res }))
+    );
+
+  @Effect() loadArtist$ = this.actions$
+    .ofType(ACTION.LOAD_ARTIST)
+    .switchMap(action =>
+      this.favoritesService.loadArtist(action.payload)
+        .map(res => ({ type: ACTION.LOAD_ARTIST_COMPLETED, payload: res }))
+    );
+
   @Effect() loadCharts$ = this.actions$
     .ofType(ACTION.LOAD_CHARTS)
     .switchMap(action =>
