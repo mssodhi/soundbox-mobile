@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
@@ -14,26 +13,16 @@ import { ACTION, STATUS } from './shared';
 export class MyApp {
   rootPage: any;
 
-  constructor(private platform: Platform, private store: Store<any>, private storage: Storage) {
+  constructor(private platform: Platform, private store: Store<any>) {
     platform.ready().then(() => {
       StatusBar.styleDefault();
       Splashscreen.hide();
-      this.storage.ready().then(() => {
-        let user = {
-          id: '1',
-          fb_id: '1209',
-          name: 'Demo',
-          pic_url: ''
-        };
-        this.storage.set('profile', user);
-      });
 
       this.store.dispatch({ type: ACTION.LOAD_PROFILE });
       this.store.select<any>('PROFILE_REDUCER')
         .filter(state => state.status == STATUS.COMPLETED)
-        .distinctUntilChanged()
         .subscribe(state => {
-          console.log(state);
+          this.store.dispatch({ type: ACTION.INIT_PLAYER });
           if(state.user && state.user.fb_id) {
             this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: state.user.fb_id });
             this.store.dispatch({ type: ACTION.LOAD_PLAYLISTS, payload: state.user.fb_id });
@@ -46,7 +35,6 @@ export class MyApp {
               redirect_uri: 'http://localhost:8080/soundbox/#/'
             });
             this.rootPage = TabsPage;
-
           } else {
             this.rootPage = SignInPage;
           }

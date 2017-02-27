@@ -59,15 +59,17 @@ export class Effects {
           this.store.select<any>('PLAYER_REDUCER')
             .filter(state => state.status === STATUS.COMPLETED)
             .subscribe(state => {
-              state.player.on('finish', () => {
-                this.store.dispatch({ type: ACTION.UPDATE_STATE, payload: {isPlaying: false} });
-                if(state.tracks && state.tracks.length > 0) {
-                  let currentIndex = state.tracks.indexOf(state.track);
-                  if(currentIndex + 1 < state.tracks.length) {
-                    this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: state.tracks[currentIndex + 1]});
+              if(state.player) {
+                state.player.on('finish', () => {
+                  this.store.dispatch({ type: ACTION.UPDATE_STATE, payload: {isPlaying: false} });
+                  if(state.tracks && state.tracks.length > 0) {
+                    let currentIndex = state.tracks.indexOf(state.track);
+                    if(currentIndex + 1 < state.tracks.length) {
+                      this.store.dispatch({ type: ACTION.LOAD_TRACK, payload: state.tracks[currentIndex + 1]});
+                    }
                   }
-                }
-              });
+                });
+              }
             });
           return ({ type: ACTION.LOAD_TRACK_COMPLETED, payload: { track: action.payload, player: res } });
         })

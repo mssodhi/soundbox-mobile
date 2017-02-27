@@ -10,8 +10,25 @@ import { ACTION, STATUS } from '../../app/shared';
 })
 export class SignInPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private storage: Storage, private store: Store<any>) {}
 
+  onFacebookSelect() {
+    console.log('sign in with fb');
+  }
+
+  onDemoSelect() {
+    this.storage.ready().then(() => {
+      let user = {
+        id: '1',
+        fb_id: '1209',
+        name: 'Demo',
+        pic_url: ''
+      };
+      this.storage.set('profile', user);
+      setTimeout(() => {
+        this.store.dispatch({ type: ACTION.LOAD_PROFILE });
+      }, 250);
+    });
   }
 
 }

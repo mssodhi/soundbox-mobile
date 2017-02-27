@@ -14,6 +14,12 @@ const INIT_STATE = {
 export const PLAYER_REDUCER: ActionReducer<any> = (state = INIT_STATE, action: Action) => {
   switch (action.type) {
 
+    case ACTION.INIT_PLAYER:
+      if(state.player) {
+        state.player.pause();
+      }
+      return Object.assign({}, INIT_STATE, { status: STATUS.COMPLETED });
+
     case ACTION.LOAD_TRACK:
       return Object.assign({}, state, { status: STATUS.IN_PROGRESS });
 
