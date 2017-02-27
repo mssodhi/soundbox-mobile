@@ -20,6 +20,11 @@ export class MusicPlayerView implements OnInit, OnDestroy {
       .subscribe(state => this.state = state );
   }
 
+  seek(value) {
+    console.log(value);
+    this.store.dispatch({ type: ACTION.SEEK, payload: value });
+  }
+
   togglePlay() {
     if(this.state.isPlaying) {
       this.store.dispatch({ type: ACTION.PAUSE });

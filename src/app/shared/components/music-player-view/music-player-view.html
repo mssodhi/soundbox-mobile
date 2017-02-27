@@ -12,9 +12,7 @@
   <h2>{{state.track.title}}</h2>
   <p>{{state.track.user.username}}</p>
 
-  <div class="music-bar-background">
-    <div class="music-bar" [style.width]="(state.player.currentTime()/state.track.duration)*100 + '%'"></div>
-  </div>
+  <ion-range min="0" [max]="state.track.duration" (ionChange)="seek($event.value)" [ngModel]="state.player.currentTime()" color="primary"></ion-range>
   <span class="current">{{state.player.currentTime() | milliToTime}}</span>
   <span class="duration">{{state.track.duration | milliToTime}}</span>
 
