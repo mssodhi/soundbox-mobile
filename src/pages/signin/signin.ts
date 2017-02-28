@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Storage } from '@ionic/storage';
 import { NavController } from 'ionic-angular';
+
 import { ACTION, STATUS } from '../../app/shared';
 
 @Component({
@@ -13,7 +14,7 @@ export class SignInPage {
   constructor(public navCtrl: NavController, private storage: Storage, private store: Store<any>) {}
 
   onFacebookSelect() {
-    console.log('sign in with fb');
+    this.store.dispatch({ type: ACTION.FACEBOOK_LOGIN });
   }
 
   onDemoSelect() {

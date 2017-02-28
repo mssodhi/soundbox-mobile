@@ -85,7 +85,7 @@ export class Effects {
   @Effect() verifyUser$ = this.actions$
     .ofType(ACTION.VERIFY_USER)
     .switchMap(action =>
-      this.profileService.verifyUser(action.payload.fb_id, action.payload.name)
+      this.profileService.verifyUser(action.payload.id, action.payload.name)
         .map(res => ({ type: ACTION.VERIFY_USER_COMPLETED, payload: res }))
     );
 
@@ -94,6 +94,20 @@ export class Effects {
     .switchMap(action =>
       this.favoritesService.getGenres()
         .map(res => ({ type: ACTION.LOAD_GENRES_COMPLETED, payload: res }))
+    );
+
+  @Effect() facebookLogin$ = this.actions$
+    .ofType(ACTION.FACEBOOK_LOGIN)
+    .switchMap(action =>
+      this.profileService.facebookLogin()
+        .map(res => ({ type: ACTION.VERIFY_USER, payload: res }))
+    );
+
+  @Effect() facebookLogout$ = this.actions$
+    .ofType(ACTION.FACEBOOK_LOGOUT)
+    .switchMap(action =>
+      this.profileService.facebookLogout()
+        .map(res => ({ type: ACTION.LOAD_PROFILE }))
     );
 
   constructor (private actions$: Actions,

@@ -8,10 +8,9 @@
   <ion-list>
     <ion-item>
       <ion-avatar item-left>
-        <img [src]="user?.pic_url">
+        <img [src]="(user?.pic_url) ? user?.pic_url : 'assets/noImage.jpg'">
       </ion-avatar>
-      <h2>{{user?.name}} Smith</h2>
-      <p>jackSmith@yahoo.com</p>
+      <h2>{{user?.name}}</h2>
     </ion-item>
   </ion-list>
 

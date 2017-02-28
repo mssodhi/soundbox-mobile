@@ -23,6 +23,7 @@ export class MyApp {
         .filter(state => state.status == STATUS.COMPLETED)
         .subscribe(state => {
           this.store.dispatch({ type: ACTION.INIT_PLAYER });
+          console.log(state.user);
           if(state.user && state.user.fb_id) {
             this.store.dispatch({ type: ACTION.LOAD_FAVORITES, payload: state.user.fb_id });
             this.store.dispatch({ type: ACTION.LOAD_PLAYLISTS, payload: state.user.fb_id });

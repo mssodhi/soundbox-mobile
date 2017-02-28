@@ -8,8 +8,8 @@ export class FavoritesService {
   url: String = '';
 
   constructor(private http: Http, private platform: Platform) {
-    // this.url = 'http://mssodhi.me/soundbox';
-    this.url = '/soundbox';
+    this.url = 'http://mssodhi.me/soundbox';
+    // this.url = '/soundbox';
   }
 
   loadPlaylist(playlist) {
