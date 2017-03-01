@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
+import { ENV } from '../../../environments/environment.dev'
+
 @Injectable()
 export class FavoritesService {
   url: String = '';
 
-  constructor(private http: Http, private platform: Platform) {
-    this.url = 'http://mssodhi.me/soundbox';
-    // this.url = '/soundbox';
+  constructor(private http: Http) {
+    this.url = ENV.SOUNDBOX_URL;
   }
 
   loadPlaylist(playlist) {

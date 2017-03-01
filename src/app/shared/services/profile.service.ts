@@ -6,7 +6,7 @@ import { Facebook } from 'ionic-native';
 import { Observable } from 'rxjs';
 import { ACTION } from '../../shared';
 
-// import { environment } from '../../../environments/environment';
+import { ENV } from '../../../environments/environment.dev';
 
 @Injectable()
 export class ProfileService {
@@ -14,8 +14,7 @@ export class ProfileService {
 
   constructor(private http: Http, private storage: Storage, private store: Store<any>) {
     Facebook.browserInit(615039345329876, '2.4');
-    this.url = 'http://mssodhi.me/soundbox';
-    // this.url = '/soundbox';
+    this.url = ENV.SOUNDBOX_URL;
   }
 
   getProfile() {
